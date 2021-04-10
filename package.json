@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@tailwindcss/forms": "^0.3.2",
     "@tailwindcss/postcss7-compat": "^2.0.2",
     "@vue/composition-api": "^1.0.0-rc.6",
     "autoprefixer": "^9",

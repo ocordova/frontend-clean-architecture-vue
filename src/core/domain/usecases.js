@@ -6,4 +6,8 @@ export class UserUsecases {
   async getUsers(page) {
     return await this.repository.getUsers(page)
   }
+
+  async createUser(user) {
+    return await this.repository.createUser(user)
+  }
 }

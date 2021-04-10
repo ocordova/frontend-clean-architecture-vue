@@ -25,12 +25,26 @@ export class UserAdapter {
     })
   }
 
+  singleDataUser = (user) => {
+    return {
+      name: user.name,
+      email: user.email,
+      gender: user.gender,
+      status: user.status
+    }
+  }
+
   toEntity(data) {
     if (!data) return null
     if (Array.isArray(data)) {
       return data.map(this.singleEntityUser)
     } else {
-      return this.singleEntityUser()
+      return this.singleEntityUser(data)
     }
+  }
+
+  toData(data) {
+    if (!data) return null
+    return this.singleDataUser(data)
   }
 }

@@ -11,6 +11,7 @@ export class UserRepository {
   async getUsers(page = 1) {
     const request = {
       url: `${this.baseUrl}/users`,
+      requiresToken: false,
       params: {
         page
       }
@@ -22,5 +23,19 @@ export class UserRepository {
     const pagination = this.paginationAdapter.toEntity(response.meta.pagination)
 
     return { data, pagination }
+  }
+
+  async createUser(user) {
+    const dataUser = this.userAdapter.toData(user)
+
+    const request = {
+      url: `${this.baseUrl}/users`,
+      requiresToken: true,
+      payload: dataUser
+    }
+
+    const data = await this.http.post(request)
+
+    return data
   }
 }

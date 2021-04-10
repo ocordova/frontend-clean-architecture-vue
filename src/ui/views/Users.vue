@@ -1,14 +1,22 @@
 <template>
   <loading v-if="isLoading" />
-  <div class="text-gray-900" v-else>
+  <div class="text-gray-900 mx-auto max-w-4xl px-8 md:px-16" v-else>
     <div class="w-full flex flex-wrap items-center justify-between mt-8">
       <h1 class="font-semibold text-3xl">Users</h1>
-      <div></div>
+      <div>
+        <router-link
+          tag="button"
+          :to="{ name: 'new-user' }"
+          class="h-10 px-5 m-2 text-white transition-colors duration-150 bg-gray-500 rounded-lg focus:shadow-outline hover:bg-gray-700"
+        >
+          New user
+        </router-link>
+      </div>
     </div>
-    <div lass="mt-8">
-      <div class="flex flex-wrap -mx-1 lg:mx-4">
+    <div class="mt-8">
+      <div class="flex flex-wrap">
         <div
-          class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3"
+          class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4"
           v-for="(user, index) in users"
           :key="index"
         >
@@ -76,12 +84,12 @@
   </div>
 </template>
 <script>
-import { onMounted, ref } from '@vue/composition-api'
+import { defineComponent, onMounted, ref } from '@vue/composition-api'
 import { useProvider } from '@/core/presentation/provider'
 import Loading from '../components/Loading'
-export default {
+export default defineComponent({
   setup() {
-    const provider = useProvider()
+    const provider = new useProvider()
     const users = ref([])
     const pagination = ref({})
     const currentPage = ref(1)
@@ -126,5 +134,5 @@ export default {
     }
   },
   components: { Loading }
-}
+})
 </script>

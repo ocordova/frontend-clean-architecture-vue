@@ -6,5 +6,6 @@ module.exports = {
       cursor: ['disabled'],
       textColor: ['disabled']
     }
-  }
+  },
+  plugins: [require('@tailwindcss/forms')]
 }
